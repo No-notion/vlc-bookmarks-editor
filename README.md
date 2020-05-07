@@ -29,18 +29,18 @@ you can modify and update storage path in the editor, wherever you like.
 On Mac :
 <div
 >
-<img src='./img/ss_01.png' width=320 height=290/>
-<img src='./img/ss_02.png' width=100 height=290 />
+<img src='https://user-images.githubusercontent.com/17938939/81250113-c086d000-9052-11ea-88bd-e9b3360ee21b.png' width=320 height=290/>
+<img src='https://user-images.githubusercontent.com/17938939/81249948-6ede4580-9052-11ea-8b81-75c649df66d8.png' width=100 height=290 />
 </div>
 On windows:
 <div>
-<img src='./img/ss_03.png' width=320 height=290/>
-<img src='./img/ss_04.png'width=150 height=320/>
+<img src='https://user-images.githubusercontent.com/17938939/81249950-70a80900-9052-11ea-9019-b886a07cc5ce.png' width=320 height=290/>
+<img src='https://user-images.githubusercontent.com/17938939/81249951-71409f80-9052-11ea-8e8a-a42a04fa0bd8.png'width=150 height=320/>
 </div>
 On Linux :
 <div>
-<img src='./img/ss_05.png' width=320 height=290/>
-<img src='./img/ss_06.png'width=150 height=320/>
+<img src='https://user-images.githubusercontent.com/17938939/81249956-7271cc80-9052-11ea-825f-0e3890e380bf.png' width=320 height=290/>
+<img src='https://user-images.githubusercontent.com/17938939/81249959-730a6300-9052-11ea-9efe-6ffa38612a31.png'width=150 height=320/>
 </div>
 
 There are more functions in landscape mode, you can use Editor to edit, change the storage path, etc. It is also more conducive to editing.
