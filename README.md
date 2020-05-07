@@ -82,7 +82,7 @@ change the `user_name` to your user name.
 - Editor : edit current media bookmarks file with TextEdit on Mac, Notepad on Windows, gedit on Linux.
 - Reload : load the media bookmarks from drive, after you edited the bookmarks file with Editor, or played another media.
 - Location : the default location of bookmarks file, you can edit within the extension.
-- Go to : open the bookmarks directory with Finder on Mac, explorer on Mac, nautilus in the Linux.
+- Go to : open the bookmarks directory with Finder on Mac, explorer on Windows, nautilus in the Linux.
 - Update : Store the location in user preference, effective after reactivate the extension, or click the reload button within the extension to make change instantly.
 
 **vertical mode features**
