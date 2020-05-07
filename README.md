@@ -1,7 +1,7 @@
 # vlc-bookmarks-editor
 vlc extension to create and edit bookmarks.
 
-## overview
+## Overview
 
 The default `Bookmark` of vlc cannot be stored permanently. If you close the media file, the bookmarks will disappear. So we need a bookmark management extension to store the bookmarks permanently.
 
@@ -77,35 +77,23 @@ change  `user_name` to your username.
 
 **horizontal mode features**
 - Capture: pause media, pop up input box, enter bookmark title
-
 - Storage: Play media and store bookmarks to drive
-
 - Edit : edit the selected bookmark
-
 - Remove : remove the selected bookmark
-
 - Jump to: jump to the time of current bookmark
-
 - Jump pre :Jump to the time of the previous bookmark
-
 - Jump next : jump to the time of next bookmark
-
 - Vertical : restart the extension to make the switch take effect
-
 - Editor : Open the bookmark file with a text editor. TextEdit on Mac, Notepad on windows, gedit on Linux
-
 - Reload :After playing another media, or editing the bookmark with a text editor, load the bookmark file from the hard disk
-
 - Location :The default storage location of the bookmark file, you can edit it in the text input
-
 - Go to : open the bookmarks folder with the folder management tool, which is finder on Mac, explorer on Windows, nautilus in the Linux.
-
 - Update :Update the storage location to user preferences, restart the extension to take effect, or click the reload button in the extension
+
 
 **vertical mode features**
 
 - Same button as horizontal mode, same function
-
 - horizontal : switch to horizontal mode.  restart expansion, take effect
 
 ## See also
