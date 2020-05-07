@@ -3,28 +3,37 @@ vlc extension to create and edit bookmarks.
 
 ## overview
 
-The default `Bookmark` of vlc cannot store bookmarks permanently. After closing the media, the bookmarks gone. So we need a bookmark editor to store the bookmarks permanently.
+The default `Bookmark` of vlc cannot be stored permanently. If you close the media file, the bookmarks will disappear. So we need a bookmark management extension to store the bookmarks permanently.
 
-**moment Track** is a very popular bookmark editor. It works well on windows and linux, but it usually doesn't work on mac. So I developed this extension `bookmark editor`
+**moment Track** is a popular bookmark editing extension, it works fine on Windows and Linux, but does not always work on mac. So I develops this extension `bookmark editor`. 
 
-It also has unique features.
+It also has some unique features.
 
 **1. seperate media bookmarks file**
 
-`bookmark editor` stores a separate file for each media bookmarks.  the file is  named after the media name, with the extension `.txt`. The default storage path is the vlc user config path.  they are 
+`bookmark editor` stores a bookmark file for each media file.  The boolmark file is  named after the media file name and the extension is`txt`. The default storage path is the user configuration data folder . 
+
 -  `/User s/user_name/Library/Application\ Support/org.videolan.vlc` on Mac, 
 - `%APPDATA%\vlc` on Windows, 
-- `/home/user_name/.local/share/vlc` in Linux. 
+- `/home/user_name/.local/share/vlc` on Linux. 
 
-change the `user_name` to your user name.
+change `user_name` to your user name.
 
-**2. change directory**
+**2. Change storage path**
 
-you can modify and update storage path in the editor, wherever you like.
+you can change it to the path you want in the extension
 
-**3. double modes**
+**3. Two modes**
 
-`bookmark editor` has two modes, landscape and portrait mode. they look like the picture below
+`bookmark editor` has two modes, horizontal and vertical mode. 
+
+There are more functions in horizontal mode,  change the bookmark storage path, edit the bookmarks with the default text editor, etc. This mode is more conducive to editing.
+
+vertical mode is the default mode,which is more streamlined. You can drag it to the edge of the screen to make it easier to capture bookmarks.
+
+See Usage for specific usage.
+
+## Interface
 
 On Mac :
 <div
@@ -43,15 +52,10 @@ On Linux :
 <img src='https://user-images.githubusercontent.com/17938939/81249959-730a6300-9052-11ea-9efe-6ffa38612a31.png'width=150 height=320/>
 </div>
 
-There are more functions in landscape mode, you can use Editor to edit, change the storage path, etc. It is also more conducive to editing.
-
-Portrait mode is the default mode, it is more streamlined. It can be dragged to the side of the screen, which is more conducive to capturing bookmarks.
-
-See Usage for specific usage.
-
 ## Installation
 
-Download the `bookmark_editor.lua` file and place the file in the vlc extension path. 
+Download the `bookmark_editor.lua` file and place it in the vlc extension folder. 
+
 
 - Windows (all users): `program_files\VideoLAN\VLC\lua\extensions\`
 - Windows (current user): `%APPDATA%\vlc\lua\extensions\`
@@ -60,33 +64,50 @@ Download the `bookmark_editor.lua` file and place the file in the vlc extension 
 - Mac OS X (all users):`/Applications/VLC.app/Contents/MacOS/share/lua/extensions/`
 - Mac OS X (current user): `/Users/user_name/Library/Application\ Support/org.videolan.vlc/lua/extensions/`
 
-change the `program_files` to location where your vlc app located.
-change the `user_name` to your user name.
+
+Change program_files to the path of your vlc program
+change  `user_name` to your username.
 
 
 ## Usage
 
 **start extension**
 - Start vlc and your video
-- Click on the menu  `VLC > Extension > VLSub` on Mac OS X or code `View > VLSub`  on windows/linux. Please note that the extension entry on Mac, because some tutorials write that it is in the view, which only works on windows or linux.
+- Click on the menu  `VLC > Extension > VLSub` on Mac OS X or code `View > VLSub`  on windows/linux. P
 
 **horizontal mode features**
-- Capture : pause the video, and text field appears to enter the title for the bookmark
-- Save : resume the video , and save the bookmark to drive
-- Edit : edit the selection bookmark
-- Remove : remove the selection bookmark
+- Capture: pause media, pop up input box, enter bookmark title
+
+- Storage: Play media and store bookmarks to drive
+
+- Edit : edit the selected bookmark
+
+- Remove : remove the selected bookmark
+
 - Jump to: jump to the time of current bookmark
-- Jump pre : jump to the time of previous bookmark
+
+- Jump pre :Jump to the time of the previous bookmark
+
 - Jump next : jump to the time of next bookmark
-- Vertical : switch to vertical mode. to make the change work, reactivate the extension
-- Editor : edit current media bookmarks file with TextEdit on Mac, Notepad on Windows, gedit on Linux.
-- Reload : load the media bookmarks from drive, after you edited the bookmarks file with Editor, or played another media.
-- Location : the default location of bookmarks file, you can edit within the extension.
-- Go to : open the bookmarks directory with Finder on Mac, explorer on Mac, nautilus in the Linux.
-- Update : Store the location in user preference, effective after reactivate the extension, or click the reload button within the extension to make change instantly.
+
+- Vertical : restart the extension to make the switch take effect
+
+- Editor : Open the bookmark file with a text editor. TextEdit on Mac, Notepad on windows, gedit on Linux
+
+- Reload :After playing another media, or editing the bookmark with a text editor, load the bookmark file from the hard disk
+
+- Location :The default storage location of the bookmark file, you can edit it in the text input
+
+- Go to : open the bookmarks folder with the folder management tool, which is finder on Mac, explorer on Windows, nautilus in the Linux.
+
+- Update :Update the storage location to user preferences, restart the extension to take effect, or click the reload button in the extension
 
 **vertical mode features**
-- all the same features are consistent with landscape mode
-- horizontal : switch to horizontal mode. to make the change work, reactivate the extension
+
+- Same button as horizontal mode, same function
+
+- horizontal : switch to horizontal mode.  restart expansion, take effect
 
 ## See also
+
+
