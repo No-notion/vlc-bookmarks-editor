@@ -80,7 +80,6 @@ function load_preference()
 
   dest = user_datadir .. '/' .. item_name .. '.txt'
 
-
 end
 
 
@@ -122,10 +121,6 @@ end
 
 function edit_bookmark()
 
-  if (mode == 1)then
-    return
-  end
-
   mode = 1
 
   xpcall(vlc_player_pause(),errorHandle)
@@ -142,10 +137,19 @@ function remove_bookmark()
   end
 
   local selects = bookmarks_list:get_selection()
+  
+  local sels = {}
+  
   for i,v in pairs(selects) do
-    table.remove(bookmarks,i)
+    table.insert(sels, i)
   end
-
+  
+  table.sort(sels, function (o1, o2) return o1 > o2 end )
+  
+  for i,v in pairs(sels) do
+  table.remove(bookmarks,v)
+  end
+  
   bookmarks_list:clear()
   show_bookmarks()
   write_bookmarks_to_drive()
@@ -314,16 +318,25 @@ end
 function change_mode_ui()
 
   if (mode == 1) then
-
-    local frame  = frame_with_layout(layout_config)
-    local x,y,w,h = frame['edit_text'][1],frame['edit_text'][2],frame['edit_text'][3],frame['edit_text'][4]
+  
     local dec_string = bookmarks[current_item]
-    text_input = mainUI:add_text_input(dec_string,x,y,w,z)
-
+    if text_input then
+      text_input:set_text(dec_string)
+      
+    else 
+    
+      local frame  = frame_with_layout(layout_config)
+      local x,y,w,h = frame['edit_text'][1],frame['edit_text'][2],frame['edit_text'][3],frame['edit_text'][4]
+      
+      text_input = mainUI:add_text_input(dec_string,x,y,w,z)
+      
+    end
+  
   else
 
     if text_input  then
       mainUI:del_widget(text_input)
+      text_input = nil
     end
 
     refresh_bookmarks_ui()
@@ -402,6 +415,10 @@ function initMainUI()
   prefer_label = mainUI:add_label('<b style="color:RoyalBlue;">Preference : </b>', x,y,w,h)
 
   x,y,w,h = layout['layout_config'][1],layout['layout_config'][2],layout['layout_config'][3],layout['layout_config'][4]
+  
+ 
+  
+  
   local text = nil
 
   if (layout_config == '1') then
@@ -431,6 +448,10 @@ function initMainUI()
 
     x,y,w,h = layout['go_to'][1],layout['go_to'][2],layout['go_to'][3],layout['go_to'][4]
     mainUI:add_button('Go to',goto_userdir, x,y,w,h)
+    
+  else
+     x,y,w,h = layout['reload'][1],layout['reload'][2],layout['reload'][3],layout['reload'][4]
+     mainUI:add_button('Reload',reload_data, x,y,w,h)
 
   end
 
@@ -462,7 +483,9 @@ function frame_with_layout(lay)
       jump_next = {1,y+9,1,1},
       jump_pre = {1,y+8,1,1},
       prefer_label = {1,y+10,1,1},
-      layout_config = {1,y+11,1,1}
+      layout_config = {1,y+12,1,1},
+      reload = {1,y+11,1,1}
+      
     }
     return frame
 
@@ -514,15 +537,13 @@ function write_bookmarks_to_drive()
   local contents = ""
 
   if (#bookmarks > 0) then
-    for i,v in ipairs(bookmarks) do
+  
+    for i,v in pairs(bookmarks) do
       contents = contents .. v .. '\n'
     end
-
-    if(contents ~= "") then
-      xpcall(write_file(dest,contents),errorHandle)
-    end
-
   end
+  
+  xpcall(write_file(dest,contents),errorHandle)
 
 end
 
@@ -609,17 +630,24 @@ function vlc_player_resume()
 
 end
 
+
 function dbg_print(content)
+
+  content_type = type(content)
+  
   if type(content) == 'string' then
     vlc.msg.dbg('[bookmarks Capture --]' .. content)
+    
   else
     vlc.msg.dbg('[bookmarks Capture --]' .. 'can not print un-string')
   end
 end
 
 function err_print(content)
-  if type(content) == 'string' then
+  
+  if content_type == 'string' then
     vlc.msg.error('[bookmarks Capture Error --]' .. content)
+ 
   else
     vlc.msg.error('[bookmarks Capture --]' .. 'can not print un-string')
   end
@@ -661,4 +689,3 @@ function check_system()
     os_type = 'mac'
   end
 end
-
