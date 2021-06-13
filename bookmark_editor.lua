@@ -111,7 +111,7 @@ function capture_bookmark()
   change_mode_ui()
 
 
-  update_message("Add the " .. #bookmarks .."th bookmark   ---Press the save button to save")
+  update_message("Add the " .. abbr_from_number(#bookmarks) .." bookmark   ---Press the save button to save")
 
 end
 
@@ -459,7 +459,7 @@ function init_mainUI()
   edit_label_2 = mainUI:add_label('<b style="color:RoyalBlue;">Edit : </b>', x,y,w,h)
 
   x,y,w,h = layout['capture'][1],layout['capture'][2],layout['capture'][3],layout['capture'][4]
-  capture_btn = mainUI:add_button('Caputre',capture_bookmark,x,y,w,h)
+  capture_btn = mainUI:add_button('Caputure',capture_bookmark,x,y,w,h)
 
   x,y,w,h = layout['save'][1],layout['save'][2],layout['save'][3],layout['save'][4]
   save_btn = mainUI:add_button('Save',save_bookmark,x,y,w,h)
@@ -507,11 +507,11 @@ function init_mainUI()
 
 
     x,y,w,h = layout['cap_untitled'][1],layout['cap_untitled'][2],layout['cap_untitled'][3],layout['cap_untitled'][4]
-    cap_untitle_btn = mainUI:add_button('cap untitle',capture_untitle,x,y,w,h)
+    cap_untitle_btn = mainUI:add_button('Capt Untitled',capture_untitle,x,y,w,h)
 
 
     x,y,w,h = layout['cap_auto'][1],layout['cap_auto'][2],layout['cap_auto'][3],layout['cap_auto'][4]
-    cap_auto_btn = mainUI:add_button('cap auto',capture_auto,x,y,w,h)
+    cap_auto_btn = mainUI:add_button('Capt Auto',capture_auto,x,y,w,h)
 
     x,y,w,h = layout['cap_check'][1],layout['cap_check'][2],layout['cap_check'][3],layout['cap_check'][4]
     cap_checkbox = mainUI:add_check_box("auto play",true, x,y,w,h)
@@ -628,7 +628,6 @@ function update_message(contents)
   message_text:set_text("<span style='color:RoyalBlue;opacity:70%;font-size:12px'>"..contents.."</span>")
 
 end 
-
 
 
 function current_location()
@@ -762,6 +761,31 @@ function err_print(content)
     vlc.msg.error('[bookmarks Capture --]' .. 'can not print un-string')
   end
 end
+
+function abbr_from_number(number)
+
+  x = ""
+
+  if number / 10 == 1 then 
+    x = number .. "th " 
+  else
+    num = number % 10 
+    if num == 1 then 
+      x = num .. "st"
+    elseif num == 2 then 
+      x = num .. "nd"
+    elseif num == 3 then 
+      x = num .. "rd"
+    else
+      x = num .. 'th' 
+    end 
+  end 
+
+  return x 
+     
+    
+end 
+
 
 function errorHandle(error)
   err_print(error)
