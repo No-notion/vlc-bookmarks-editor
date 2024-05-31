@@ -1,14 +1,12 @@
 # vlc-bookmarks-editor
-vlc extension to create and edit bookmarks.
+An extension for VLC that enables the creation and editing of bookmarks.
 
-## Overview
+## Introduction
 
-The default `Bookmark` of vlc cannot be stored permanently. If you close the media file, the bookmarks will disappear. So we need a bookmark management extension to store the bookmarks permanently.
+The VLC's default Bookmark feature doesn't offer permanent storage. When you close the media file, the bookmarks disappear. To address this, we introduce the bookmark editor extension that allows for permanent bookmark storage.
+While moment Track is a widely used bookmark editing extension that works well on Windows and Linux, it's inconsistent on Mac. Hence, the development of bookmark editor which also offers unique functionalities.
 
-**moment Track** is a popular bookmark editing extension, it works fine on Windows and Linux, but does not always work on mac. So I develops this extension `bookmark editor`. 
-
-It also has some unique features.
-
+## Features
 **1. seperate media bookmarks file**
 
 `bookmark editor` stores a bookmark file for each media file.  The boolmark file is  named after the media file name and the extension is`txt`. The default storage path is the user configuration data folder . 
@@ -71,30 +69,29 @@ change  `user_name` to your username.
 
 ## Usage
 
-**start extension**
-- Start vlc and your video
-- Click on the menu  `VLC > Extension > VLSub` on Mac OS X or code `View > VLSub`  on windows/linux. P
+**Launching the Extension**
+- Begin by starting VLC and your chosen video.
+- Navigate to VLC > Extension > Bookmarks Editor on Mac OS X or View > Bookmarks Editor on Windows/Linux to open the extension.
+**Features in Horizontal Mode**
+ - Capture: Pause the media, a pop-up input box will appear for you to enter the bookmark title.
+ - Storage: Play the media and store bookmarks to your drive.
+ - Edit: Modify the selected bookmark.
+ - Remove: Delete the selected bookmark.
+ - Jump to: Navigate to the timestamp of the current bookmark.
+ - Jump pre: Navigate to the timestamp of the previous bookmark.
+ - Jump next: Navigate to the timestamp of the next bookmark.
+ - Vertical: Restart the extension to switch to vertical mode.
+ - Editor: Open the bookmark file with a text editor, such as TextEdit on Mac, Notepad on Windows, or Gedit on Linux.
+ - Reload: After switching to another media or editing the bookmark with a text editor, this will load the bookmark file from the hard drive.
+ - Location: This is the default storage location of the bookmark file, which can be modified in the text input field.
+ - Go to: Open the bookmarks folder with the folder management tool. This is Finder on Mac, Explorer on Windows, and Nautilus on Linux.
+ - Update: Update the storage location to user preferences. Restart the extension for the changes to take effect, or click the reload button in the extension.
 
-**horizontal mode features**
-- Capture: pause media, pop up input box, enter bookmark title
-- Storage: Play media and store bookmarks to drive
-- Edit : edit the selected bookmark
-- Remove : remove the selected bookmark
-- Jump to: jump to the time of current bookmark
-- Jump pre :Jump to the time of the previous bookmark
-- Jump next : jump to the time of next bookmark
-- Vertical : restart the extension to make the switch take effect
-- Editor : Open the bookmark file with a text editor. TextEdit on Mac, Notepad on windows, gedit on Linux
-- Reload :After playing another media, or editing the bookmark with a text editor, load the bookmark file from the hard disk
-- Location :The default storage location of the bookmark file, you can edit it in the text input
-- Go to : open the bookmarks folder with the folder management tool, which is finder on Mac, explorer on Windows, nautilus in the Linux.
-- Update :Update the storage location to user preferences, restart the extension to take effect, or click the reload button in the extension
 
+**Features in Vertical Mode**
 
-**vertical mode features**
-
-- Same button as horizontal mode, same function
-- horizontal : switch to horizontal mode.  restart expansion, take effect
+ - The buttons function the same as in horizontal mode.
+ - Horizontal: Switch to horizontal mode. Restart the extension for the changes to take effect.
 
 ## See also
 

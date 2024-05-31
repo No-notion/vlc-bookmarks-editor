@@ -4,7 +4,7 @@ function descriptor()
     version = "1.0",
     author = "devin",
     url = 'https://github.com/No-notion/bookmarks-captures',
-    shortdesc = "create and edit bookmarks",
+    shortdesc = "bookmarks editor",
     description = "",
     capabilities = {"menu", "playing-listener"}
   }
@@ -24,13 +24,19 @@ user_datadir = nil
 
 os_type = nil  -- windows, linux, mac
 
+local d
+
 function activate()
+
+  
 
   if  xpcall(get_media_info,errorHandle)  then
     dbg_print("Welcome")
     check_system()
     init_data()
     init_mainUI()
+
+    listen_event()
 
   else
 
@@ -39,6 +45,23 @@ function activate()
 
   end
 
+end
+
+function deactivate()
+  if d then -- If the dialog exists
+      d:delete() -- Delete the dialog
+  end
+end
+
+function listen_event()
+
+  dbg_print("listen media changed")
+
+  vlc.event.attach(vlc.playlist, "playing", function()
+    dbg_print("Media changed.")
+    reload_data()
+end)
+  
 end
 
 function init_data()
@@ -89,6 +112,8 @@ function add_bookmark(dec_string)
 
   xpcall(vlc_player_pause(),errorHandle)
 
+  dbg_print("add book mark")
+
 end
 
 -- refresh bookmark view and save to hard disk -- 
@@ -106,6 +131,8 @@ function capture_bookmark()
   
   local format_string = current_time_string()
   local dec_string = '[[' .. format_string .. ']]'
+
+  dbg_print('create bookmark')
 
   add_bookmark(dec_string)
   change_mode_ui()
@@ -279,6 +306,7 @@ function jump_to_item(item)
     stamp = stamp_from_time(time)
     xpcall(jump_to_stamp(stamp),errorHandle)
   end
+  vlc_player_resume()
 
   update_message("Jump to ".. current_item .. "th bookmark")
 
@@ -287,6 +315,8 @@ end
 function jump_to_stamp(stamp)
 
   if stamp then
+
+    dbg_print("jump to " .. stamp)
 
     vlc.var.set(input,"time",stamp)
     if jump_checkbox:get_checked() == true then  vlc_player_resume() end 
@@ -322,9 +352,6 @@ function reload_data()
   show_bookmarks()
 
   update_message(string.format("Reload %s", dest))
-
-
-
 
 
 end
@@ -444,6 +471,7 @@ function init_mainUI()
   local layout = frame_with_layout(layout)
 
   mainUI = vlc.dialog('bookmarks editor')
+  d = mainUI
   local x,y,w,h = layout['top_lay'][1],layout['top_lay'][2],layout['top_lay'][3],layout['top_lay'][4]
   mainUI:add_label('</br>',x,y,w,z)
 
